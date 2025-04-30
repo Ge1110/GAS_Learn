@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Character/PlayerCharacterBase.h"
-#include "PlayerCharacter.generated.h"
+#include "AuraPlayerCharacter.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GASLEARNING_API APlayerCharacter : public APlayerCharacterBase
+class GASLEARNING_API AAuraPlayerCharacter : public APlayerCharacterBase
 {
 	GENERATED_BODY()
 	
