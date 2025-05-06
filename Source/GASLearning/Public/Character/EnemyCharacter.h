@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Character/PlayerCharacterBase.h"
-#include "Components/BoxComponent.h"
 #include "Interaction/EnemyInterface.h"
 #include "EnemyCharacter.generated.h"
 
@@ -17,6 +16,7 @@ class GASLEARNING_API AEnemyCharacter : public APlayerCharacterBase, public IEne
 	GENERATED_BODY()
 	
 public:
+	AEnemyCharacter();
 	
 	virtual void HighLightActor() override;
 	virtual void UnHighLightActor() override;
