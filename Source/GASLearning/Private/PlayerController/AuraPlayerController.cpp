@@ -4,10 +4,78 @@
 #include "PlayerController/AuraPlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "Interaction/EnemyInterface.h"
 
 AAuraPlayerController::AAuraPlayerController()
 {
 	bReplicates = true;
+}
+
+void AAuraPlayerController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
+
+	CursorTrace();
+}
+
+
+void AAuraPlayerController::CursorTrace()
+{
+	FHitResult CursorHit;
+	GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
+	if(!CursorHit.bBlockingHit) return;
+
+	LastActor = ThisActor;
+	ThisActor = Cast<IEnemyInterface>(CursorHit.GetActor());
+
+	/**
+	 *鼠标射线检测
+	 *1. LastActor is null  && ThisActor is null
+	 *		Do nothing
+	 *2. LastActor is null && ThisActor is valid
+	 *		HighLight ThisActor
+	 *3. LastActor is valid && ThisActor is null
+	 *		UnHighlight LastActor
+	 *4. Both actor are valid, LastActor != ThisActor
+	 *		UnHighlight LastActor,HighLight ThisActor
+	 *5. Both actor are valid, LastActor == ThisActor
+	 *		Do nothing
+	 */
+	if (LastActor == nullptr)
+	{
+		if (ThisActor != nullptr)
+		{
+			//case 2
+			ThisActor->HighLightActor();
+		}
+		else
+		{
+			//case 1
+		}
+	}
+	else
+	{
+		if (ThisActor == nullptr)
+		{
+			//case 3
+			LastActor->UnHighLightActor();
+		}
+		else // both valid
+		{
+			if (LastActor != ThisActor)
+			{
+				//case 4
+				LastActor->UnHighLightActor();
+				ThisActor->HighLightActor();
+			}
+			else
+			{
+				//case 5
+				
+			}
+		}
+	}
+	
 }
 
 void AAuraPlayerController::BeginPlay()
