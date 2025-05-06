@@ -13,5 +13,6 @@ UCLASS()
 class GASLEARNING_API AAuraPlayerCharacter : public APlayerCharacterBase
 {
 	GENERATED_BODY()
-	
+public:
+	AAuraPlayerCharacter();
 };
