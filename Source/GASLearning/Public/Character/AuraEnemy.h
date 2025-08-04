@@ -3,20 +3,20 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Character/PlayerCharacterBase.h"
+#include "Character/AuraCharacterBase.h"
 #include "Interaction/EnemyInterface.h"
-#include "EnemyCharacter.generated.h"
+#include "AuraEnemy.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GASLEARNING_API AEnemyCharacter : public APlayerCharacterBase, public IEnemyInterface
+class GASLEARNING_API AAuraEnemy : public AAuraCharacterBase, public IEnemyInterface
 {
 	GENERATED_BODY()
 	
 public:
-	AEnemyCharacter();
+	AAuraEnemy();
 	
 	virtual void HighLightActor() override;
 	virtual void UnHighLightActor() override;

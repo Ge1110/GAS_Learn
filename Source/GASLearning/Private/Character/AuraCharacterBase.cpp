@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Character/PlayerCharacterBase.h"
+#include "Character/AuraCharacterBase.h"
 
-APlayerCharacterBase::APlayerCharacterBase()
+AAuraCharacterBase::AAuraCharacterBase()
 {
 	PrimaryActorTick.bCanEverTick = false;
 
@@ -12,12 +12,12 @@ APlayerCharacterBase::APlayerCharacterBase()
 	Weapon->SetCollisionEnabled(ECollisionEnabled::NoCollision); 
 }
 
-UAbilitySystemComponent* APlayerCharacterBase::GetAbilitySystemComponent() const
+UAbilitySystemComponent* AAuraCharacterBase::GetAbilitySystemComponent() const
 {
 	return GetAbilitySystemComponent();
 }
 
-void APlayerCharacterBase::BeginPlay()
+void AAuraCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
 	

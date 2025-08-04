@@ -5,18 +5,18 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
 #include "GameFramework/Character.h"
-#include "PlayerCharacterBase.generated.h"
+#include "AuraCharacterBase.generated.h"
 
 class UAbilitySystemComponent;
 class UAttributeSet;
 
 UCLASS(Abstract)
-class GASLEARNING_API APlayerCharacterBase : public ACharacter, public IAbilitySystemInterface
+class GASLEARNING_API AAuraCharacterBase : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
 public:
-	APlayerCharacterBase();
+	AAuraCharacterBase();
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const {return AttributeSet;}
 protected:

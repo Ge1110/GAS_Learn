@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Character/PlayerCharacterBase.h"
+#include "Character/AuraCharacterBase.h"
 #include "AuraPlayerCharacter.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class GASLEARNING_API AAuraPlayerCharacter : public APlayerCharacterBase
+class GASLEARNING_API AAuraPlayerCharacter : public AAuraCharacterBase
 {
 	GENERATED_BODY()
 public:
