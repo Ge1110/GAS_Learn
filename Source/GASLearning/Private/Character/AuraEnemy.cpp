@@ -3,6 +3,7 @@
 
 #include "Character/AuraEnemy.h"
 
+#include "AudioMixerBlueprintLibrary.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "GASLearning/GASLearning.h"
@@ -13,8 +14,15 @@ AAuraEnemy::AAuraEnemy()
 	
 	AbilitySystemComponent = CreateDefaultSubobject<UAuraAbilitySystemComponent>("AuraAbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
 
 	AttributeSet = CreateDefaultSubobject<UAuraAttributeSet>("AttributeSet");
+}
+
+void AAuraEnemy::BeginPlay()
+{
+	Super::BeginPlay();
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
 }
 
 void AAuraEnemy::HighLightActor()
